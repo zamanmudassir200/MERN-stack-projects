@@ -4,6 +4,7 @@ import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
+import { enqueueSnackbar } from "notistack";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
@@ -37,10 +38,12 @@ const EditBook = () => {
     axios
       .patch(`http://localhost:3000/books/${id}`, newBook)
       .then(() => {
+        enqueueSnackbar("Book Edited Successfully", { variant: "success" });
+
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.message);
+        enqueueSnackbar("Error", { variant: "error" });
         setLoading(false);
       });
   };
