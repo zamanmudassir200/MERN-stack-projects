@@ -14,7 +14,6 @@ const Home = () => {
     axios
       .get("http://localhost:3000/books")
       .then((res) => {
-        console.log(res.data.data);
         setBooks(res.data.data);
         setLoading(false);
       })
@@ -44,7 +43,6 @@ const Home = () => {
           Books List
         </h1>
         <Link to="/books/create">
-          {" "}
           <MdOutlineAddBox className="text-4xl" />
         </Link>
       </div>
