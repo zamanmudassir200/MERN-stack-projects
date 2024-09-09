@@ -32,7 +32,7 @@ const BookCard = ({ books }) => {
               </span>
               <h2 className="my-1"> {item.author}</h2>
             </div>
-            <div className="flex justify-start items-center gap-x-2 mt-4 p-4 ">
+            <div className="flex justify-start items-center gap-10 mt-4 p-4 ">
               <Link to={`/books/showBook/${item._id}`}>
                 <BiInfoCircle className="text-2xl text-green-800 hover:text-black" />
               </Link>
