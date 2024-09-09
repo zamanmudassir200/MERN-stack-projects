@@ -16,7 +16,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:3000/books/${id}`)
+      .get(`https://bookstore-crud-i82d.onrender.com/books/${id}`)
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
@@ -36,7 +36,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .patch(`http://localhost:3000/books/${id}`, newBook)
+      .patch(`https://bookstore-crud-i82d.onrender.com/books/${id}`, newBook)
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
 

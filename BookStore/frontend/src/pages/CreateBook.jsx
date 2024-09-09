@@ -19,7 +19,7 @@ const CreateBook = () => {
     };
     setLoading(true);
     axios
-      .post(`http://localhost:3000/books`, newBook)
+      .post(`https://bookstore-crud-i82d.onrender.com/books`, newBook)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created Successfully", { variant: "success" });
