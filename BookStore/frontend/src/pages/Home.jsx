@@ -32,13 +32,13 @@ const Home = () => {
           className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
           onClick={() => setShowType("table")}
         >
-          <FaListAlt />
+          <FaListAlt /> <span>Table</span>
         </button>
         <button
           className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
           onClick={() => setShowType("card")}
         >
-          <IoGrid />
+          <IoGrid /> <span>Card</span>
         </button>
       </div>
       <div className="flex items-center justify-between gap-2">
