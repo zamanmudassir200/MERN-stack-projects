@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import BookCard from "../components/home/BookCard";
 import BookTable from "../components/home/BookTable";
 import { MdOutlineAddBox } from "react-icons/md";
+import { FaListAlt } from "react-icons/fa";
+import { IoGrid } from "react-icons/io5";
+
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,13 +32,13 @@ const Home = () => {
           className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
           onClick={() => setShowType("table")}
         >
-          Table
+          <FaListAlt />
         </button>
         <button
           className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
           onClick={() => setShowType("card")}
         >
-          Card
+          <IoGrid />
         </button>
       </div>
       <div className="flex items-center justify-between gap-2">
