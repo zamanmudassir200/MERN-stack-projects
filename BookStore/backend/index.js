@@ -16,8 +16,8 @@ app.use(
   })
 );
 
-// Preflight handling
-// app.options("*", cors());
+//Preflight handling
+app.options("*", cors());
 
 // Middleware for parsing request body
 app.use(express.json());
