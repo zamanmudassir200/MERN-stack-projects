@@ -16,7 +16,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://bookstore-crud-i82d.onrender.com/books/${id}`)
+      .get(`https://book-store-backend-three-eosin.vercel.app/books/${id}`)
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
@@ -36,7 +36,10 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .patch(`https://bookstore-crud-i82d.onrender.com/books/${id}`, newBook)
+      .patch(
+        `https://book-store-backend-three-eosin.vercel.app/books/${id}`,
+        newBook
+      )
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
 

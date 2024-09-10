@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://bookstore-crud-i82d.onrender.com/books")
+      .get("https://book-store-backend-three-eosin.vercel.app/books")
       .then((res) => {
         setBooks(res.data.data);
         setLoading(false);

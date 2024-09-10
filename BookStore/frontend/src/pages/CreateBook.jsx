@@ -19,7 +19,7 @@ const CreateBook = () => {
     };
     setLoading(true);
     axios
-      .post(`https://bookstore-crud-i82d.onrender.com/books`, newBook)
+      .post(`https://book-store-backend-three-eosin.vercel.app/books`, newBook)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created Successfully", { variant: "success" });
