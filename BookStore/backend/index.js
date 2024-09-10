@@ -46,7 +46,7 @@ dotenv.config();
 // Middleware
 app.use(
   cors({
-    origin: "https://book-store-frontend-psi-gray.vercel.app/",
+    origin: "https://mern-stack-projects-q2j2.vercel.app/",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
