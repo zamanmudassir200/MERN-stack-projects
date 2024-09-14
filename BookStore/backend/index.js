@@ -3,24 +3,26 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import BookRoutes from "./routes/BookRoutes.js";
 import cors from "cors";
-
+import bodyParser from "body-parser";
+import AuthRoutes from "./routes/AuthRoutes.js";
 const app = express();
 dotenv.config();
 
-// CORS Middleware
+// CORS Middleware for local development
 app.use(
   cors({
-    origin: "https://mern-stack-projects-q2j2.vercel.app",
+    origin: "http://localhost:5173", // Fixed origin
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
 
-//Preflight handling
+// Preflight handling
 app.options("*", cors());
 
 // Middleware for parsing request body
 app.use(express.json());
+app.use(bodyParser.json()); // Ensure this is used before routes
 
 // MongoDB connection
 mongoose
@@ -42,5 +44,6 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/books", BookRoutes);
+app.use("/auth", AuthRoutes);
 
 export default app;
