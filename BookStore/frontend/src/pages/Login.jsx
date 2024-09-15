@@ -15,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { name, email, password } = loginInfo;
+    const { email, password } = loginInfo;
 
     if (!email || !password) {
       return handleError("All fields are required");
@@ -57,7 +57,6 @@ const Login = () => {
       <h1 className="text-center text-3xl font-bold p-4">Login</h1>
       <form
         onSubmit={handleLogin}
-        action=""
         className="max-w-[700px] border-2 mx-auto p-5 rounded-lg border-sky-700"
       >
         <div className="flex flex-col">
