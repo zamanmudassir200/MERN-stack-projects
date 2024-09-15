@@ -22,13 +22,16 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginInfo),
-      });
+      const response = await fetch(
+        "https://mern-stack-projects-ten.vercel.app/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginInfo),
+        }
+      );
       const result = await response.json();
       const { success, message, jwtToken, name, error } = result;
       if (success) {
