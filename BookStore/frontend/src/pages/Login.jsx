@@ -57,7 +57,6 @@ const Login = () => {
       <h1 className="text-center text-3xl font-bold p-4">Login</h1>
       <form
         onSubmit={handleLogin}
-        method="post"
         action=""
         className="max-w-[700px] border-2 mx-auto p-5 rounded-lg border-sky-700"
       >
