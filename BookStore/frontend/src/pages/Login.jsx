@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "https://mern-stack-projects-ten.vercel.app/login",
+        "https://mern-stack-projects-ten.vercel.app/auth/login",
         {
           method: "POST",
           headers: {
