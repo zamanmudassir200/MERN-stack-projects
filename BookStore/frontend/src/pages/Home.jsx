@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://mern-stack-projects-ten.vercel.app/books")
+      .get("https://backend-three-sandy.vercel.app/books")
       .then((res) => {
         setBooks(res.data.data);
         setLoading(false);

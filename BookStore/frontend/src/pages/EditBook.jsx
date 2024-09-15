@@ -16,7 +16,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://mern-stack-projects-ten.vercel.app/books/${id}`)
+      .get(`https://backend-three-sandy.vercel.app/books/${id}`)
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
@@ -36,7 +36,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .patch(`https://mern-stack-projects-ten.vercel.app/books/${id}`, newBook)
+      .patch(`https://backend-three-sandy.vercel.app/books/${id}`, newBook)
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
         navigate("/");

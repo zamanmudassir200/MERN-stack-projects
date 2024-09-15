@@ -10,7 +10,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://mern-stack-projects-ten.vercel.app/books/${id}`)
+      .get(`https://backend-three-sandy.vercel.app/books/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);

@@ -25,7 +25,7 @@ const Signup = () => {
 
     try {
       const response = await fetch(
-        "https://mern-stack-projects-ten.vercel.app/auth/signup",
+        "https://backend-three-sandy.vercel.app/auth/signup",
         {
           method: "POST",
           headers: {
