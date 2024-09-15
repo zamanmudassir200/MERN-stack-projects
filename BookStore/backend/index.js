@@ -11,7 +11,7 @@ dotenv.config();
 // CORS Middleware for local development
 app.use(
   cors({
-    origin: ["mern-stack-projects-q2j2.vercel.app"], // Fixed origin
+    origin: ["https://mern-stack-projects-q2j2.vercel.app"], // Fixed origin
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
