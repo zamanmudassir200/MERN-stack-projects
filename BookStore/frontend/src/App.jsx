@@ -13,6 +13,7 @@ import ShowBook from "./pages/ShowBook";
 import DeleteBook from "./pages/DeleteBook";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Logout from "./pages/Logout";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const PrivateRoute = ({ element }) => {
@@ -39,6 +40,7 @@ const App = () => {
     <div className="bg-slate-900 text-white min-h-screen">
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

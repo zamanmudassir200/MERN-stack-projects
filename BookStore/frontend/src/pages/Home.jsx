@@ -32,23 +32,16 @@ const Home = () => {
         setLoading(false);
       });
   }, []);
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("loggedInUser");
-    handleSuccess("User logged out");
-    setTimeout(() => {
-      navigate("/login");
-    }, 1000);
-  };
+
   return (
-    <main className="p-10 ">
+    <main className="p-5 sm:p-7 ">
       <div className="flex justify-between items-center  my-2 p-2">
         <h1 className="text-xl font-bold">
           Welcome <span className=" text-sky-500"> {loggedInUser}</span>
         </h1>
         <div className="">
           <button
-            onClick={handleLogout}
+            onClick={() => navigate("/logout")}
             className="bg-sky-600 p-2 rounded-lg font-semibold border-2 "
           >
             Logout

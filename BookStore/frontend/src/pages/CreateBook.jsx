@@ -11,7 +11,8 @@ const CreateBook = () => {
   const [publishYear, setPublishYear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const handleSaveBook = () => {
+  const handleSaveBook = (e) => {
+    e.preventDefault();
     const newBook = {
       title,
       author,
@@ -26,8 +27,7 @@ const CreateBook = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.message);
-        enqueueSnackbar("Error", { variant: "error" });
+        enqueueSnackbar(`Error - ${err.message}`, { variant: "error" });
         setLoading(false);
       });
   };
@@ -36,6 +36,7 @@ const CreateBook = () => {
       <BackButton />
       <h1 className="text-2xl my-3">Create Book</h1>
       {loading ? <Spinner /> : ""}
+      {/* <form action="" onSubmit={handleSaveBook} method="POST"> */}
       <div className="flex flex-col border-2 border-sky-400 rounded-xl max-w-[600px]  p-5 mx-auto">
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-300" htmlFor="">
@@ -74,12 +75,13 @@ const CreateBook = () => {
           />
         </div>
         <button
-          className="p-3 bg-sky-300 my-2 text-black font-bold rounded-lg w-full"
           onClick={handleSaveBook}
+          className="p-3 bg-sky-300 my-2 text-black font-bold rounded-lg w-full"
         >
           Save
         </button>
       </div>
+      {/* </form> */}
     </div>
   );
 };

@@ -22,20 +22,20 @@ const BookTable = ({ books }) => {
       <tbody>
         {books.map((book, index) => {
           return (
-            <tr key={book._id} className="h-10 ">
-              <td className="border p-1 border-slate-700 rounded-md text-center ">
+            <tr key={book._id} className="h-10 hover:bg-gray-700  ">
+              <td className="border p-1 border-slate-500  text-center ">
                 {index + 1}
               </td>
-              <td className="border border-slate-700 rounded-md text-center ">
+              <td className="border border-slate-500  text-center ">
                 {book.title}
               </td>
-              <td className="border border-slate-700 rounded-md text-center max-md:hidden ">
+              <td className="border border-slate-500  text-center max-md:hidden ">
                 {book.author}
               </td>
-              <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+              <td className="border border-slate-500 text-center max-md:hidden">
                 {book.publishYear}
               </td>
-              <td className="border border-slate-700 rounded-md text-center ">
+              <td className="border border-slate-500  text-center ">
                 <div className="flex gap-4 items-center justify-center">
                   <Link to={`/books/showBook/${book._id}`}>
                     <BsInfoCircle className="text-2xl text-green-500 cursor-pointer" />

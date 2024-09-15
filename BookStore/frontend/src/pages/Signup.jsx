@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 import { useNavigate } from "react-router-dom";
 const Signup = () => {

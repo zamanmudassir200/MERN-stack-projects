@@ -39,11 +39,10 @@ const EditBook = () => {
       .patch(`http://localhost:3000/books/${id}`, newBook)
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
-
         navigate("/");
       })
       .catch((err) => {
-        enqueueSnackbar("Error", { variant: "error" });
+        enqueueSnackbar(`Error - ${err.message}`, { variant: "error" });
         setLoading(false);
       });
   };

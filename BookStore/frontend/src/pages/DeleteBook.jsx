@@ -15,12 +15,11 @@ const DeleteBook = () => {
       .delete(`http://localhost:3000/books/${id}`)
       .then(() => {
         setLoading(false);
-        enqueueSnackbar("Book Deleted Successfully", { variant: "success" });
         navigate("/");
+        enqueueSnackbar("Book Deleted Successfully", { variant: "success" });
       })
       .catch((err) => {
-        console.log(err.message);
-        enqueueSnackbar("Error", { variant: "error" });
+        enqueueSnackbar(`Error - ${err.message}`, { variant: "error" });
         setLoading(false);
       });
   };
@@ -29,7 +28,7 @@ const DeleteBook = () => {
       <BackButton />
       <h1 className="text-2xl my-3">Delete Book</h1>
       {loading ? <Spinner /> : ""}
-      <div className="flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px]  p-8 mx-auto">
+      <div className="flex flex-col items-center border-2 border-sky-400 rounded-xl max-w-[600px]  p-4 lg:p-8 mx-auto">
         <h3 className="text-center text-2xl">
           Are you sure you want to delete this book?
         </h3>
