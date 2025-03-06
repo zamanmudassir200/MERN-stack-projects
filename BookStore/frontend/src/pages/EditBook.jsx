@@ -5,6 +5,7 @@ import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import { enqueueSnackbar } from "notistack";
+import url from "../url.js";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
@@ -16,7 +17,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://backend-three-sandy.vercel.app/books/${id}`)
+      .get(`${url}/books/${id}`)
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);

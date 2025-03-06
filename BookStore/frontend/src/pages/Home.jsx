@@ -9,6 +9,7 @@ import { FaListAlt } from "react-icons/fa";
 import { IoGrid } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { handleSuccess } from "../utils";
+import url from "../url.js";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -22,7 +23,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://backend-three-sandy.vercel.app/books")
+      .get(`${url}/books`)
       .then((res) => {
         setBooks(res.data.data);
         setLoading(false);

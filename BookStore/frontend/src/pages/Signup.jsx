@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 import { useNavigate } from "react-router-dom";
+import url from "../url";
 const Signup = () => {
   const [signupInfo, setSignupInfo] = useState({
     name: "",
@@ -24,16 +25,13 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://backend-three-sandy.vercel.app/auth/signup",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(signupInfo),
-        }
-      );
+      const response = await fetch(`${url}/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupInfo),
+      });
       const result = await response.json();
       const { success, message, error } = result;
       if (success) {

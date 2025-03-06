@@ -4,6 +4,8 @@ import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import { useNavigate, useParams } from "react-router";
 import { enqueueSnackbar } from "notistack";
+import url from "../url.js";
+
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`https://backend-three-sandy.vercel.app/books/${id}`)
+      .delete(`${url}/books/${id}`)
       .then(() => {
         setLoading(false);
         navigate("/");

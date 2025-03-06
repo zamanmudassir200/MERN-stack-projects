@@ -3,6 +3,7 @@ import BackButton from "../components/BackButton.jsx";
 import axios from "axios";
 import Spinner from "../components/Spinner.jsx";
 import { useParams } from "react-router-dom";
+import url from "../url.js";
 const ShowBook = () => {
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://backend-three-sandy.vercel.app/books/${id}`)
+      .get(`${url}/books/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);

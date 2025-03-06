@@ -4,6 +4,7 @@ import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router";
 import { enqueueSnackbar } from "notistack";
+import url from "../url.js";
 
 const CreateBook = () => {
   const [title, setTitle] = useState("");
@@ -20,7 +21,7 @@ const CreateBook = () => {
     };
     setLoading(true);
     axios
-      .post(`https://backend-three-sandy.vercel.app/books`, newBook)
+      .post(`${url}/books`, newBook)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created Successfully", { variant: "success" });
