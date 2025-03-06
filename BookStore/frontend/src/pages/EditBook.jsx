@@ -37,7 +37,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .patch(`https://backend-three-sandy.vercel.app/books/${id}`, newBook)
+      .patch(`${url}/books/${id}`, newBook)
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
         navigate("/");
