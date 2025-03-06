@@ -11,7 +11,7 @@ dotenv.config();
 // CORS Middleware for local development
 app.use(
   cors({
-    origin: ["https://frontend-psi-flax-33.vercel.app"], // Fixed origin
+    origin: ["https://mern-stack-projects-ve4b.vercel.app"], // Fixed origin
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
