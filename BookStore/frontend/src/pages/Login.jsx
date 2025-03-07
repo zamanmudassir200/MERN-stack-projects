@@ -33,6 +33,8 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Include cookies in the request
+
         body: JSON.stringify(loginInfo),
       });
 
@@ -60,7 +62,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto h-screen p-10">
+    <div className="container mx-auto min-h-screen p-10">
       <h1 className="text-center text-3xl font-bold p-4">Login</h1>
       <form
         onSubmit={handleLogin}

@@ -10,6 +10,7 @@ const CreateBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [isbn, setIsbn] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSaveBook = (e) => {
@@ -18,10 +19,13 @@ const CreateBook = () => {
       title,
       author,
       publishYear,
+      isbn,
     };
     setLoading(true);
     axios
-      .post(`${url}/books`, newBook)
+      .post(`${url}/books`, newBook, {
+        withCredentials: true,
+      })
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created Successfully", { variant: "success" });
@@ -72,6 +76,18 @@ const CreateBook = () => {
             value={publishYear}
             placeholder="Publish Year"
             onChange={(e) => setPublishYear(e.target.value)}
+            className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
+          />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-300" htmlFor="">
+            ISBN (International Standard Book Number)
+          </label>
+          <input
+            type="text"
+            value={isbn}
+            placeholder="isbn"
+            onChange={(e) => setIsbn(e.target.value)}
             className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
           />
         </div>

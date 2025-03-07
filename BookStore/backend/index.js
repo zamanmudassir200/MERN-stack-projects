@@ -5,14 +5,19 @@ import BookRoutes from "./routes/BookRoutes.js";
 import cors from "cors";
 import bodyParser from "body-parser";
 import AuthRoutes from "./routes/AuthRoutes.js";
+import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
+app.use(cookieParser());
 
-// CORS Middleware for local development
 app.use(
   cors({
-    origin: ["https://mern-stack-projects-ve4b.vercel.app"], // Fixed origin
+    origin: [
+      "https://mern-stack-projects-ve4b.vercel.app",
+      "http://localhost:5173",
+    ], // Replace with your frontend URL
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Authorization", "Content-Type"],
     credentials: true,
   })
 );

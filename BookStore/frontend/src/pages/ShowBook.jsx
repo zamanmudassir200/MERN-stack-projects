@@ -11,13 +11,14 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${url}/books/${id}`)
+      .get(`${url}/books/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setBook(res.data);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err.message);
         setLoading(false);
       });
   }, []);
@@ -29,10 +30,7 @@ const ShowBook = () => {
         <Spinner />
       ) : (
         <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-400 ">Id: </span>
-            <span>"{book._id}"</span>
-          </div>
+          <div className="my-4"></div>
           <div className="my-4">
             <span className="text-xl mr-4 text-gray-400 ">Title: </span>
             <span>"{book.title}"</span>
@@ -46,12 +44,8 @@ const ShowBook = () => {
             <span>"{book.publishYear}"</span>
           </div>
           <div className="my-4">
-            <span className="text-xl mr-4 text-gray-400 ">Created At: </span>
-            <span>"{new Date(book.createdAt).toString()}"</span>
-          </div>{" "}
-          <div className="my-4">
-            <span className="text-xl mr-4 text-gray-400 ">Updated At: </span>
-            <span>"{new Date(book.updatedAt).toString()}"</span>
+            <span className="text-xl mr-4 text-gray-400 ">ISBN: </span>
+            <span>"{book.isbn}"</span>
           </div>
         </div>
       )}

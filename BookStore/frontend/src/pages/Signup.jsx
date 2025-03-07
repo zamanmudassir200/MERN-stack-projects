@@ -31,6 +31,7 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(signupInfo),
+        credentials: "include", // Include cookies in the request
       });
       const result = await response.json();
       const { success, message, error } = result;
@@ -51,7 +52,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mx-auto h-screen p-10">
+    <div className="container mx-auto min-h-screen p-10">
       <h1 className="text-center text-3xl font-bold p-4">Sign up</h1>
       <form
         onSubmit={handleSignup}

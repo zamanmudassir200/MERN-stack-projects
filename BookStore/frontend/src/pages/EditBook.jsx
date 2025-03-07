@@ -11,17 +11,21 @@ const EditBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [isbn, setIsbn] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`${url}/books/${id}`)
+      .get(`${url}/books/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setTitle(res.data.title);
         setAuthor(res.data.author);
         setPublishYear(res.data.publishYear);
+        setIsbn(res.data.isbn);
         setLoading(false);
       })
       .catch((err) => {
@@ -34,10 +38,13 @@ const EditBook = () => {
       title,
       author,
       publishYear,
+      isbn,
     };
     setLoading(true);
     axios
-      .patch(`${url}/books/${id}`, newBook)
+      .patch(`${url}/books/${id}`, newBook, {
+        withCredentials: true,
+      })
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
         navigate("/");
@@ -82,10 +89,25 @@ const EditBook = () => {
             Publish Year
           </label>
           <input
-            type="text"
+            type="number"
             value={publishYear}
             placeholder="Publish Year"
             onChange={(e) => setPublishYear(e.target.value)}
+            className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
+          />
+        </div>
+        <div className="my-4">
+          <label className="text-xl mr-4 text-gray-300" htmlFor="">
+            ISBN (International Standard Book Number) <br />
+            <small className="text-red-500">
+              Note: This will always be unique for every book
+            </small>
+          </label>
+          <input
+            type="text"
+            value={isbn}
+            placeholder="isbn"
+            onChange={(e) => setIsbn(e.target.value)}
             className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
           />
         </div>

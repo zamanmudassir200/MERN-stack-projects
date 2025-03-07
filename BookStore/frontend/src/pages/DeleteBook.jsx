@@ -14,7 +14,9 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-      .delete(`${url}/books/${id}`)
+      .delete(`${url}/books/${id}`, {
+        withCredentials: true,
+      })
       .then(() => {
         setLoading(false);
         navigate("/");

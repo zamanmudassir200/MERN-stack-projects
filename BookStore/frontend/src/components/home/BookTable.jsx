@@ -9,12 +9,17 @@ const BookTable = ({ books }) => {
       <thead>
         <tr>
           <th className="border border-slate-400 rounded-md">No</th>
+          <th className="border border-slate-400 rounded-md">Cover Page</th>
+
           <th className="border border-slate-400 rounded-md">Title</th>
           <th className="border border-slate-400 rounded-md max-md:hidden">
             Author
           </th>
           <th className="border border-slate-400 rounded-md max-md:hidden">
             PublishYear
+          </th>
+          <th className="border border-slate-400 rounded-md max-md:hidden">
+            ISBN
           </th>
           <th className="border border-slate-400 rounded-md">Operations</th>
         </tr>
@@ -27,6 +32,13 @@ const BookTable = ({ books }) => {
                 {index + 1}
               </td>
               <td className="border border-slate-500  text-center ">
+                <img
+                  className="h-24 overflow-hidden w-full "
+                  src={book.coverPage}
+                  alt=""
+                />
+              </td>
+              <td className="border border-slate-500  text-center ">
                 {book.title}
               </td>
               <td className="border border-slate-500  text-center max-md:hidden ">
@@ -34,6 +46,9 @@ const BookTable = ({ books }) => {
               </td>
               <td className="border border-slate-500 text-center max-md:hidden">
                 {book.publishYear}
+              </td>
+              <td className="border border-slate-500 text-center max-md:hidden">
+                {book.isbn}
               </td>
               <td className="border border-slate-500  text-center ">
                 <div className="flex gap-4 items-center justify-center">
