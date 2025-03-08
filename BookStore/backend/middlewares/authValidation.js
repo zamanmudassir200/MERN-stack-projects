@@ -26,23 +26,51 @@ export const loginValidation = (req, res, next) => {
   next();
 };
 
-export const authenticationToken = (req, res, next) => {
-  // Get the token from cookies
-  const { token } = req.cookies;
-  console.log("Token", token);
+// export const authenticationToken = (req, res, next) => {
+//   // Get the token from cookies
+//   const { token } = req.cookies;
 
-  // If token doesn't exist, send an error response
-  if (!token) {
+//   console.log("Token", token);
+
+//   // If token doesn't exist, send an error response
+//   if (!token) {
+//     return res.status(403).json({ message: "Token not found. Access denied." });
+//   }
+
+//   try {
+//     // Verify and decode the token
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+//     // Log the decoded data (you'll have access to the data you signed in the token, such as email and _id)
+
+//     // Optionally, store the decoded user data in the request object for use in later routes
+//     req.user = decoded;
+
+//     // Move to the next middleware or route handler
+//     next();
+//   } catch (error) {
+//     // If token verification fails, send an error response
+//     return res.status(401).json({ message: "Invalid or expired token." });
+//   }
+// };
+
+export const authenticationToken = (req, res, next) => {
+  // Get the token from the Authorization header
+  const authHeader = req.headers.authorization;
+
+  // If the token is not provided, send an error response
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(403).json({ message: "Token not found. Access denied." });
   }
+
+  // Extract the token from the Bearer string
+  const token = authHeader.split(" ")[1];
 
   try {
     // Verify and decode the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Log the decoded data (you'll have access to the data you signed in the token, such as email and _id)
-
-    // Optionally, store the decoded user data in the request object for use in later routes
+    // Store the decoded user data in the request object for use in later routes
     req.user = decoded;
 
     // Move to the next middleware or route handler
