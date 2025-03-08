@@ -51,10 +51,20 @@ const EditBook = () => {
       isbn,
     };
     setLoading(true);
+    const token = localStorage.getItem("token");
     axios
-      .patch(`${url}/books/${id}`, newBook, {
-        withCredentials: true,
-      })
+      .patch(
+        `${url}/books/${id}`,
+        newBook,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
         enqueueSnackbar("Book Edited Successfully", { variant: "success" });
         navigate("/");
