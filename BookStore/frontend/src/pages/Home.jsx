@@ -44,7 +44,7 @@ const Home = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`, // Attach the token in the Authorization header
           },
-          credentials: true, // This ensures cookies are sent with the request
+          credentials: "include", // This ensures cookies are sent with the request
         });
 
         if (!userResponse.ok) {
