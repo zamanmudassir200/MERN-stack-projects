@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 import { useNavigate } from "react-router-dom";
+
+import { IoEye, IoEyeOff } from "react-icons/io5";
+
 import url from "../url";
 const Signup = () => {
   const [signupInfo, setSignupInfo] = useState({
@@ -10,6 +13,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +45,8 @@ const Signup = () => {
           navigate("/login");
         }, 1000);
       } else if (error) {
-        const details = error?.details[0].message;
+        const details =
+          error?.details?.[0]?.message || error?.message || "Signup failed.";
         handleError(details);
       } else if (!success) {
         handleError(message);
@@ -52,7 +57,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mx-auto min-h-screen p-10">
+    <div className="container mx-auto min-h-screen p-3">
       <h1 className="text-center text-3xl font-bold p-4">Sign up</h1>
       <form
         onSubmit={handleSignup}
@@ -81,17 +86,27 @@ const Signup = () => {
             onChange={handleChange}
             value={signupInfo.email}
           />
+
           <label htmlFor="password" className="font-bold text-lg mb-2">
             Password
           </label>
-          <input
-            className="outline-none p-3 mb-4 rounded-md text-black font-semibold text-lg"
-            type="password"
-            name="password"
-            placeholder="Enter your password..."
-            onChange={handleChange}
-            value={signupInfo.password}
-          />
+          <div className="w-full relative">
+            <input
+              className="outline-none  p-3 mb-4  w-full rounded-md text-black font-semibold text-lg"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Enter your password..."
+              onChange={handleChange}
+              value={signupInfo.password}
+            />
+            <button
+              className="absolute right-2 top-1 text-black text-2xl  p-2"
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <IoEye /> : <IoEyeOff />}
+            </button>
+          </div>
           <button className="bg-sky-600 p-3 my-4 hover:bg-sky-400 transition-all rounded-md font-semibold text-lg">
             Sign up
           </button>
