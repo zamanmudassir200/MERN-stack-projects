@@ -13,18 +13,28 @@ const CreateBook = () => {
   const [isbn, setIsbn] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleSaveBook = (e) => {
     e.preventDefault();
+
+    // Get token from localStorage (or another method if you have one)
+    const token = localStorage.getItem("token");
+
     const newBook = {
       title,
       author,
       publishYear,
       isbn,
     };
+
     setLoading(true);
+
     axios
       .post(`${url}/books`, newBook, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`, // Add the token to Authorization header
+        },
+        withCredentials: true, // If you need to send cookies along with the request
       })
       .then(() => {
         setLoading(false);
@@ -36,13 +46,13 @@ const CreateBook = () => {
         setLoading(false);
       });
   };
+
   return (
     <div className="p-4">
       <BackButton />
       <h1 className="text-2xl my-3">Create Book</h1>
       {loading ? <Spinner /> : ""}
-      {/* <form action="" onSubmit={handleSaveBook} method="POST"> */}
-      <div className="flex flex-col border-2 border-sky-400 rounded-xl max-w-[600px]  p-5 mx-auto">
+      <div className="flex flex-col border-2 border-sky-400 rounded-xl max-w-[600px] p-5 mx-auto">
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-300" htmlFor="">
             Title
@@ -52,7 +62,7 @@ const CreateBook = () => {
             value={title}
             placeholder="Title"
             onChange={(e) => setTitle(e.target.value)}
-            className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
+            className="p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
           />
         </div>
         <div className="my-4">
@@ -64,7 +74,7 @@ const CreateBook = () => {
             value={author}
             placeholder="Author"
             onChange={(e) => setAuthor(e.target.value)}
-            className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
+            className="p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
           />
         </div>{" "}
         <div className="my-4">
@@ -76,7 +86,7 @@ const CreateBook = () => {
             value={publishYear}
             placeholder="Publish Year"
             onChange={(e) => setPublishYear(e.target.value)}
-            className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
+            className="p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
           />
         </div>
         <div className="my-4">
@@ -88,7 +98,7 @@ const CreateBook = () => {
             value={isbn}
             placeholder="isbn"
             onChange={(e) => setIsbn(e.target.value)}
-            className=" p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
+            className="p-3 mt-1 font-semibold outline-pink-500 rounded-lg text-black w-full"
           />
         </div>
         <button
@@ -98,7 +108,6 @@ const CreateBook = () => {
           Save
         </button>
       </div>
-      {/* </form> */}
     </div>
   );
 };

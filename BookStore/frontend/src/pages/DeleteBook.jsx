@@ -13,10 +13,20 @@ const DeleteBook = () => {
 
   const handleDeleteBook = () => {
     setLoading(true);
+    const token = localStorage.getItem("token");
+
     axios
-      .delete(`${url}/books/${id}`, {
-        withCredentials: true,
-      })
+      .delete(
+        `${url}/books/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then(() => {
         setLoading(false);
         navigate("/");

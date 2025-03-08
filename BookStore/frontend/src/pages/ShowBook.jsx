@@ -10,10 +10,20 @@ const ShowBook = () => {
   const { id } = useParams();
   useEffect(() => {
     setLoading(true);
+    const token = localStorage.getItem("token");
+
     axios
-      .get(`${url}/books/${id}`, {
-        withCredentials: true,
-      })
+      .get(
+        `${url}/books/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setBook(res.data);
         setLoading(false);
